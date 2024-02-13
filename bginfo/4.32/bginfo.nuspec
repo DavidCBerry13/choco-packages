@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Read this before creating packages: https://docs.chocolatey.org/en-us/create/create-packages -->
+<!-- It is especially important to read the above link to understand additional requirements when publishing packages to the community feed aka dot org (https://community.chocolatey.org/packages). -->
+
+<!-- Test your packages in a test environment: https://github.com/chocolatey/chocolatey-test-environment -->
+
+<!--
+This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Reference. Chocolatey uses a special version of NuGet.Core that allows us to do more than was initially possible. As such there are certain things to be aware of:
+
+* the package xmlns schema url may cause issues with nuget.exe
+* Any of the following elements can ONLY be used by choco tools - projectSourceUrl, docsUrl, mailingListUrl, bugTrackerUrl, packageSourceUrl, provides, conflicts, replaces
+* nuget.exe can still install packages with those elements but they are ignored. Any authoring tools or commands will error on those elements
+-->
+
+<!-- You can embed software files directly into packages, as long as you are not bound by distribution rights. -->
+<!-- * If you are an organization making private packages, you probably have no issues here -->
+<!-- * If you are releasing to the community feed, you need to consider distribution rights. -->
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <!-- == PACKAGE SPECIFIC SECTION == -->
+    <id>bginfo</id>
+    <version>4.3.2</version>
+    <owners>Choco Packages Learning Repo</owners>
+    <!-- ============================== -->
+
+    <!-- == SOFTWARE SPECIFIC SECTION == -->
+    <!-- This section is about the software itself -->
+    <title>BG Info</title>
+    <authors>Sysinternals (Mark Russinovich)</authors>
+    <tags>system information</tags>
+    <summary>Automatic desktop backgrounds that include system information </summary>
+    <description>
+      BgInfo is a fully-configurable program to automatically generate desktop backgrounds that include important information about the system including IP addresses, computer name, network adapters, and more.
+
+      How many times have you walked up to a system in your office and needed to click through several diagnostic windows to remind yourself of important aspects of its configuration, such as its name, IP address, or operating system version? If you manage multiple computers you probably need BGInfo. It automatically displays relevant information about a Windows computer on the desktop's background, such as the computer name, IP address, service pack version, and more. You can edit any field as well as the font and background colors, and can place it in your startup folder so that it runs every boot, or even configure it to display as the background for the logon screen.
+      Command line usage
+      
+      When you run BGInfo it shows you the appearance and content of its default desktop background. If left untouched it will automatically apply these settings and exit after its 10 second count-down timer expires.
+      
+      Selecting any button or menu item will disable the timer, allowing you to customize the layout and content of the background information.
+      
+      If you want BGInfo to edit or use a configuration stored in a file (instead of the default configuration which is stored in the registry) specify the name of the file on the command line: BGInfo MyConfig.bgi
+      
+      **path** Specifies the name of a configuration file to use for the current session. Changes to the configuration are automatically saved back to the file when OK or Apply is pressed. If this parameter is not present BGInfo uses the default configuration information which is stored in the registry under the current user (HKEY_CURRENT_USER\Software\Winternals\BGInfo).
+      
+      **/timer** Specifies the timeout value for the countdown timer, in seconds. Specifying zero will update the display without displaying the configuration dialog. Specifying 300 seconds or longer disables the timer altogether.
+      
+      **/popup** Causes BGInfo to create a popup window containing the configured information without updating the desktop. The information is formatted exactly as it would if displayed on the desktop, but resides in a fitted window instead. When using this option the history database is not updated.
+      
+      **/silent** Suppresses error messages.
+      
+      **/taskbar** Causes BGInfo to place an icon in the taskbar's status area without updating the desktop. Clicking the icon causes the configured information to appear in a popup window. When using this option the history database is not updated.
+      
+      **/all** Specifies that BGInfo should change the wallpaper for any and all users currently logged in to the system. This option is useful within a Terminal Services environment, or when BGInfo is scheduled to run periodically on a system used by more than one person (see Using a Schedule below).
+      
+      **/log** Causes BGInfo to write errors to the specified log file instead of generating a warning dialog box. This is useful for tracking down errors that occur when BGInfo is run under the scheduler.
+      
+      **/rtf** Causes BGInfo to write its output text to an RTF file. All formatting information and colors are included.
+    </description>
+  </metadata>
+  <files>
+    <!-- this section controls what actually gets packaged into the Chocolatey package -->
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
