@@ -3,7 +3,7 @@
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 $filePath = if ((Get-OSArchitectureWidth 64) -and $env:chocolateyForceX86 -ne $true) {
     Write-Host "Installing 64 bit version"
-    Get-Item $toolsDir\*_x64.exe 
+    Get-Item $toolsDir\*-x64.exe 
 }
 else { 
     Write-Error "This package only contains the 64 bit version of 7-zip.  Cannot install on 32 bit system" 
