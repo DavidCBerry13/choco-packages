@@ -69,12 +69,12 @@ This repo organizes its contents by package and version in a hierarchy that look
   - 16.04
   - 19.00
   - 23.04
-notepad-plus-plus
+- notepad-plus-plus
   - 8.5.8
   - 8.6.0
   - 8.6.2
--process-explorer
-  -17.05
+- process-explorer
+  - 17.05
 
 This heierachy allows the repo to contain multiple package versions for the same app.  Top level directories (7zip, notepad-plus-plus, process-explorer) will be referred to as *parent package* directories in this document.  The subdirectories under these parent directories will be referrred to as *package version* directories since they represent individual versions of each package.
 
